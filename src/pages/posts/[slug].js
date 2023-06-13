@@ -73,6 +73,7 @@ export default function Post({ post, socialImage, related }) {
       <ArticleJsonLd post={post} siteTitle={siteMetadata.title} />
 
       <Header>
+        <meta property="og:image" content={post.featuredImage.node.sourceUrl} />
         {featuredImage && (
           <FeaturedImage
             {...featuredImage}
