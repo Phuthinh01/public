@@ -73,16 +73,13 @@ export default function Post({ post, socialImage, related }) {
       <ArticleJsonLd post={post} siteTitle={siteMetadata.title} />
 
       <Header>
-        <meta property="og:title" content={post.title} />
-		<link rel="canonical" href={`https://${host}/${path}`} />
-		<meta property="og:description" content={removeTags(post.excerpt)} />
-		<meta property="og:url" content={`https://${host}/${path}`} />
-		<meta property="og:type" content="article" />
-		<meta property="og:locale" content="en_US" />
-		<meta property="og:site_name" content={host.split('.')[0]} />
-		<meta property="article:published_time" content={post.dateGmt} />
-		<meta property="article:modified_time" content={post.modifiedGmt} />
-		<meta property="og:image" content={post.featuredImage.node.sourceUrl} />
+        {featuredImage && (
+          <FeaturedImage
+            {...featuredImage}
+            src={featuredImage.sourceUrl}
+            dangerouslySetInnerHTML={featuredImage.caption}
+          />
+        )}
         <h1
           className={styles.title}
           dangerouslySetInnerHTML={{
